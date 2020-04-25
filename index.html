@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <!--<script src="https://cdn.jsdelivr.net/npm/mathjs@6.6.4/dist/math.min.js"></script>-->
+    <script src="https://cdn.jsdelivr.net/gh/corbanbrook/dsp.js/dsp.js"></script>
+    <script src="script.js" charset="utf-8"></script>
+<style>
+</style>
+  </head>
+  <body style="float: left">
+    <div style="position: absolute; width: 1800px; height: 100px; border: 3px solid">
+      <div style="z-index: 1; display:block; position: absolute; width: 100%; height: 100%; background: #800" id="backgroundDiv"></div>
+      <div style="z-index: 2; display:block; position: absolute; left: 0px; width: 0px; height:100%; background: #c00 !important" id="highlightDiv"></div>
+      <div style="z-index: 5; display:block; position: absolute" id="analyzerDiv">
+        <canvas id="oscCanvas" width="1800" height="100"></canvas>
+      </div>
+      <div style="display:block; position: absolute; z-index: 30" id="contentDiv">
+        <input type="checkbox" id="mutebox">Mute</input>
+        <input type="checkbox" id="freezebox">Freeze Microphone</input>
+        <button onclick="setTimeout(() => document.getElementById('freezebox').click(),5000)">Freeze in 5 seconds</button>
+        <button onclick="drawFFTBars()">Draw</button>
+        <button onclick="setSineWave()">Sine</button>
+        <button onclick="doBigFFT()">FFT</button>
+        <button onclick="graphBigSignal()">Graph</button>
+        <button onclick="doSweep = true;sweepSelection(0.01)">Sweep</button>
+        <button onclick="doSweep = false">Stop Sweep</button>
+        <input type="file" id="audio-file" accept="audio/mpeg, audio/ogg, audio/*" />
+        <button onclick="readInFile()">Load File</button>
+        <input type="checkbox" id="fftbox">Selection FFT</input>
+      </div>
+    </div>
+    <div>
+      <div style="z-index: 999; display:block; position: absolute; top: 120px; background: #080" id="graphDiv">
+        <canvas id="graphCanvas" width="1900" height="300" style="border:3px solid #000;"></canvas>
+      </div>
+      <div style="z-index: 999; display:block; position: absolute; top: 940px; background: #0a0">
+        <span id="graphSub"></span><br>
+        <span id="graphReadout"></span>
+      </div>
+    </div>
+  </body>
+</html>
